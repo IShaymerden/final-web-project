@@ -176,5 +176,28 @@
   <footer>
     <p>&copy; 2026 My Final Web Project</p>
   </footer>
+
+  
+<script>
+  const searchInput =
+    document.getElementById("searchInput");
+
+  document.getElementById("searchBtn")
+    .addEventListener("click", function() {
+      const query = searchInput.value.trim();
+
+      if (query) {
+        alert("Searching for: " + query);
+      } else {
+        alert("Please enter a destination.");
+      }
+    });
+
+  document.getElementById("clearBtn")
+    .addEventListener("click", function() {
+      searchInput.value = "";
+    });
+</script>
+
 </body>
 </html>
