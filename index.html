@@ -192,27 +192,36 @@
   
 
 <script>
-  const searchInput =
-    document.getElementById("searchInput");
+  const searchInput = document.getElementById("searchInput");
+  const results = document.getElementById("results");
+  const recommendations = document.getElementById("recommendations");
 
-  const results =
-    document.getElementById("results");
-
-  const recommendations =
-    document.getElementById("recommendations");
-
-  const beaches = [
-    {
-      name: "Whitehaven Beach, Australia",
-      description: "A beautiful beach famous for its white sand and crystal-clear turquoise water.",
-      image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800"
-    },
-    {
-      name: "Tropical Beach Paradise",
-      description: "A relaxing tropical destination with palm trees, warm sunshine, and beautiful ocean views.",
-      image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800"
-    }
-  ];
+  const destinations = {
+    beach: [
+      {
+        name: "Whitehaven Beach, Australia",
+        description: "A beautiful beach with white sand and turquoise water.",
+        image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=800"
+      },
+      {
+        name: "Tropical Beach Paradise",
+        description: "A relaxing beach destination with palm trees and ocean views.",
+        image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=800"
+      }
+    ],
+    temple: [
+      {
+        name: "Borobudur Temple, Indonesia",
+        description: "A famous Buddhist temple in Central Java, known for its ancient architecture and stone carvings.",
+        image: "https://images.unsplash.com/photo-1533676802871-eca1ae998cd5?w=800"
+      },
+      {
+        name: "Temple of Heaven, China",
+        description: "A historic imperial temple complex in Beijing, famous for its beautiful architecture.",
+        image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?w=800"
+      }
+    ]
+  };
 
   document.getElementById("searchBtn")
     .addEventListener("click", function() {
@@ -220,32 +229,40 @@
 
       recommendations.innerHTML = "";
 
+      let selected = [];
+
       if (query.includes("beach")) {
-        beaches.forEach(function(beach) {
+        selected = destinations.beach;
+      } else if (query.includes("temple")) {
+        selected = destinations.temple;
+      }
+
+      if (selected.length > 0) {
+        selected.forEach(function(place) {
           const card = document.createElement("div");
           card.style.cssText =
             "background:white;padding:20px;margin:20px 0;" +
             "border-radius:12px;box-shadow:0 2px 8px #ddd;";
 
           const title = document.createElement("h3");
-          title.textContent = beach.name;
+          title.textContent = place.name;
 
           const img = document.createElement("img");
-          img.src = beach.image;
-          img.alt = beach.name;
+          img.src = place.image;
+          img.alt = place.name;
           img.style.cssText =
             "width:100%;max-height:300px;" +
             "object-fit:cover;border-radius:8px;";
 
           const description = document.createElement("p");
-          description.textContent = beach.description;
+          description.textContent = place.description;
 
           card.append(title, img, description);
           recommendations.appendChild(card);
         });
       } else {
         recommendations.textContent =
-          "No recommendations found. Try searching for beach.";
+          "No recommendations found. Try beach or temple.";
       }
 
       results.style.display = "block";
@@ -258,6 +275,7 @@
       results.style.display = "none";
     });
 </script>
+
 
 
 </body>
