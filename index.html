@@ -244,12 +244,16 @@
       recommendations.innerHTML = "";
 
       let selected = [];
+      
+      
+       if (query.includes("beach")) {
+  selected = destinations.beach;
+} else if (query.includes("temple")) {
+  selected = destinations.temple;
+} else if (query.includes("countr")) {
+  selected = destinations.country;
+}
 
-      if (query.includes("beach")) {
-        selected = destinations.beach;
-      } else if (query.includes("temple")) {
-        selected = destinations.temple;
-      }
 
       if (selected.length > 0) {
         selected.forEach(function(place) {
