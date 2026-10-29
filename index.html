@@ -88,14 +88,73 @@
 </section>
 
 
-    <section id="contact">
-      <h2>Contact Us</h2>
-      <p>You can contact the project developer
-      through GitHub.</p>
-      <a href="https://github.com/IShaymerden">
-        Visit My GitHub Profile
-      </a>
-    </section>
+    
+<section id="contact">
+  <h2>Contact Us</h2>
+
+  <h3>Contact Information</h3>
+  <p>Company: Tech Solutions</p>
+  <p>Location: Astana, Kazakhstan</p>
+  <p>
+    GitHub:
+    <a href="https://github.com/IShaymerden">
+      IShaymerden
+    </a>
+  </p>
+
+  <h3>Send Us a Message</h3>
+  <p>Fill out the form to contact our team.</p>
+
+  <form id="contactForm">
+    <label for="name">Full Name:</label><br>
+    <input type="text" id="name" required
+           style="width:100%;padding:10px;margin:8px 0;">
+    <br>
+
+    <label for="email">Email Address:</label><br>
+    <input type="email" id="email" required
+           style="width:100%;padding:10px;margin:8px 0;">
+    <br>
+
+    <label for="message">Your Message:</label><br>
+    <textarea id="message" rows="5" required
+              style="width:100%;padding:10px;margin:8px 0;">
+    </textarea>
+    <br>
+
+    <button type="submit"
+            style="background:#284779;color:white;
+                   padding:12px 25px;border:0;
+                   border-radius:6px;cursor:pointer;">
+      Send Message
+    </button>
+  </form>
+
+  <script>
+    document.getElementById("contactForm")
+      .addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const message = document.getElementById("message").value;
+
+        const subject = encodeURIComponent(
+          "Website Contact from " + name
+        );
+
+        const body = encodeURIComponent(
+          "Name: " + name +
+          "\nEmail: " + email +
+          "\n\nMessage:\n" + message
+        );
+
+        window.location.href =
+          "mailto:YOUR_EMAIL@example.com?subject=" +
+          subject + "&body=" + body;
+      });
+  </script>
+</section>
   </main>
 
   <footer>
